@@ -69,6 +69,7 @@ const QRReader = () => {
             )}
             {barScan && (
               <BarcodeScannerComponent
+                facingMode="environment"
                 width={500}
                 height={500}
                 onUpdate={handleBarcodeScan}
