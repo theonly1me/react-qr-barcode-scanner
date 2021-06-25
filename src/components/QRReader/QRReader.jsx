@@ -74,7 +74,7 @@ const QRReader = () => {
                 onUpdate={handleBarcodeScan}
               />
             )}
-            <div className={classes.result}>{data}</div>
+            {data && <div className={classes.result}>{data}</div>}
           </React.Fragment>
         </Modal>
       )}
