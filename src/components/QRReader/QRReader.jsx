@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import QRScanner from 'react-qr-reader';
-import BarcodeScannerComponent from 'react-webcam-barcode-scanner2';
+import BarcodeScanner from 'react-qr-barcode-scanner';
 import Modal from './Modal';
+import useSound from 'use-sound';
 
 import classes from './qr-reader.module.css';
 
@@ -11,17 +12,24 @@ const QRReader = () => {
   const [qrScan, setQrScan] = useState(false);
   const [barScan, setBarScan] = useState(false);
 
+  const [playAlert] = useSound(`${process.env.PUBLIC_URL}/assets/alert.wav`, {
+    volume: 0.25,
+  });
+
   const handleQRScan = data => {
     if (!data) return;
     setData(data);
+    playAlert();
   };
 
   const handleBarcodeScan = (err, data) => {
+    if (err) console.error(err);
     if (!data) return;
     setData(data.text);
+    playAlert();
   };
 
-  const handleError = error => console.error(error);
+  const handleError = err => console.error(err);
 
   return (
     <div className={classes.container}>
@@ -64,14 +72,11 @@ const QRReader = () => {
                 delay={100}
                 onError={handleError}
                 onScan={handleQRScan}
-                style={{ width: '90%' }}
               />
             )}
             {barScan && (
-              <BarcodeScannerComponent
-                facingMode="environment"
-                width={500}
-                height={500}
+              <BarcodeScanner
+                style={{ width: '90%' }}
                 onUpdate={handleBarcodeScan}
               />
             )}

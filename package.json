@@ -8,9 +8,10 @@
     "@testing-library/user-event": "^12.8.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-qr-barcode-scanner": "^1.0.6",
     "react-qr-reader": "^2.2.1",
     "react-scripts": "4.0.3",
-    "react-webcam-barcode-scanner2": "0.0.6-rc2",
+    "use-sound": "^4.0.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
