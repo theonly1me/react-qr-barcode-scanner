@@ -76,7 +76,7 @@ const QRReader = () => {
             )}
             {barScan && (
               <BarcodeScanner
-                style={{ width: '90%' }}
+                style={{ width: '90%', height: '70%' }}
                 onUpdate={handleBarcodeScan}
               />
             )}
